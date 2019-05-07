@@ -1,30 +1,15 @@
-%% from review-pdfmaker
-\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+% Re:VIEW 2互換のlayout.tex.erb記載相当の内容
+\RequirePackage{review-base}
 
-\pagestyle{empty}
-\renewcommand{\sectionmark}[1]{\markright{\thesection~#1}{}}
-\renewcommand{\chaptermark}[1]{\markboth{\prechaptername\ \thechapter\ \postchaptername~#1}{}}
-\renewcommand{\headfont}{\gtfamily\sffamily\bfseries}
+% Re:VIEW 2互換のreviewmacro.sty(装飾カスタマイズ)内容
+\RequirePackage{review-style}
 
-%% using Helvetica as sans-serif
-\renewcommand{\sfdefault}{phv}
+% ユーザー固有の定義
+\RequirePackage{review-custom}
 
-%% for listings
-%\renewcommand{\lstlistingname}{List}
-%\lstset{%
-%  breaklines=true,%
-%  breakautoindent=false,%
-%  breakindent=0pt,%
-%  fontadjust=true,%
-%  backgroundcolor=\color{shadecolor},%
-%  frame=single,%
-%  framerule=0pt,%
-%  basicstyle=\ttfamily\scriptsize,%
-%  commentstyle=\color{reviewgreen},%
-%  identifierstyle=\color{reviewblue},%
-%  stringstyle=\color{reviewred},%
-%  keywordstyle=\bfseries\color{reviewdarkred},%
-%}
+%% run \@endofreviewmacrohook at the end of reviewmacro style
+\@ifundefined{@endofreviewmacrohook}{}{%
+\let\AtEndOfReVIEWMacro\@firstofone
+\@endofreviewmacrohook}
 
-
-\sloppy
+\endinput
