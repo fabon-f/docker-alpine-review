@@ -40,4 +40,11 @@ docker run -t --rm -v "$(pwd)/mybook:/book" fabon/alpine-review /bin/sh -c "cd /
 
 * TexLive 2018
 * Re:VIEW 3.0.0
-* graphviz, gnuplot, aafigure, blockdiag(`//graph`用)
+* Graphviz, gnuplot, aafigure, blockdiag(`//graph`用)
+* Java 8(PlantUML用)
+
+PlantUMLを使う場合、作業ディレクトリ(例だとmybookの下)に`plantuml.jar`を配置してください。
+
+# 過去バージョン
+
+現在存在しているタグは`2.5.0`, `3.0.0`, `latest`(3.0.0)です。
