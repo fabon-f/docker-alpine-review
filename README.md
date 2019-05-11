@@ -39,5 +39,5 @@ docker run -t --rm -v "$(pwd)/mybook:/book" fabon/alpine-review /bin/sh -c "cd /
 # 仕様
 
 * TexLive 2018
-* Re:VIEW 2.5.0
+* Re:VIEW 3.0.0
 * graphviz, gnuplot, aafigure, blockdiag(`//graph`用)
