@@ -39,7 +39,7 @@ docker run -t --rm -v "$(pwd)/mybook:/book" fabon/alpine-review /bin/sh -c "cd /
 # 仕様
 
 * TexLive 2018
-* Re:VIEW 3.0.0
+* Re:VIEW 3.1.0
 * Graphviz, gnuplot, aafigure, blockdiag(`//graph`用)
 * Java 8(PlantUML用)
 
@@ -47,4 +47,4 @@ PlantUMLを使う場合、作業ディレクトリ(例だとmybookの下)に`pla
 
 # 過去バージョン
 
-現在存在しているタグは`2.5.0`, `3.0.0`, `latest`(3.0.0)です。
+現在存在しているタグは`2.5.0`, `3.0.0`, `3.1.0`, `latest`(3.1.0)です。
