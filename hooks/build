@@ -7,4 +7,10 @@ else
     DOCKERFILE_PATH_ARG="-f $DOCKERFILE_PATH"
 fi
 
-docker build --build-arg REVIEW_VERSION=${DOCKER_TAG} ${DOCKERFILE_PATH_ARG} -t $IMAGE_NAME .
+if [[ "$DOCKER_TAG" = "latest" ]]; then
+    REVIEW_VERSION="3.0.0"
+else
+    REVIEW_VERSION="$DOCKER_TAG"
+fi
+
+docker build --build-arg REVIEW_VERSION=${REVIEW_VERSION} ${DOCKERFILE_PATH_ARG} -t $IMAGE_NAME .
