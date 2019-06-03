@@ -6,10 +6,13 @@ ARG REVIEW_VERSION
 ENV mecab_url https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE
 ENV ipadic_url https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM
 
-RUN apk --no-cache add ruby graphviz gnuplot python3 py3-reportlab openjdk8-jre ghostscript && \
+RUN apk --no-cache add ruby graphviz gnuplot python3 py3-reportlab ghostscript && \
     gem install review -v "$REVIEW_VERSION" --no-rdoc --no-ri && \
     pip3 install aafigure blockdiag && \
     echo "[blockdiag]" >> "$HOME/.blockdiagrc" && echo "fontpath = /usr/share/fonts/ttf-dejavu/DejaVuSerif.ttf" >> "$HOME/.blockdiagrc"
+
+# skip Java installation in v2.x
+RUN if [ "$(echo "$REVIEW_VERSION" | cut -c1-2)" != "2." ]; then apk --no-cache add openjdk8-jre; fi
 
 RUN if [ "$(echo "$REVIEW_VERSION" | cut -c1-2)" != "2." ]; then \
     : "skip MeCab installation if the version is 2.x" && \
