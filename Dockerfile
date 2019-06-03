@@ -11,10 +11,12 @@ RUN apk --no-cache add ruby graphviz gnuplot python3 py3-reportlab openjdk8-jre 
     pip3 install aafigure blockdiag && \
     echo "[blockdiag]" >> "$HOME/.blockdiagrc" && echo "fontpath = /usr/share/fonts/ttf-dejavu/DejaVuSerif.ttf" >> "$HOME/.blockdiagrc"
 
-RUN apk add --no-cache --virtual .deps build-base curl file ruby-dev && mkdir /tmp/mecab && \
+RUN [ "$(echo "$REVIEW_VERSION" | cut -c1-2)" != "2." ] && \
+    : "skip MeCab installation if the version is 2.x" && \
+    apk add --no-cache --virtual .deps build-base curl file ruby-dev && mkdir /tmp/mecab && \
     curl -L ${mecab_url} | tar -xzf - -C /tmp/mecab --strip-components 1 && cd /tmp/mecab && \
     ./configure --enable-utf8-only --with-charset=utf8 && make && make install && cd && rm -rf /tmp/mecab && \
     gem install mecab --no-rdoc --no-ri && \
     mkdir /tmp/mecab-ipadic && curl -L ${ipadic_url} | tar -xzf - -C /tmp/mecab-ipadic --strip-components 1 && cd /tmp/mecab-ipadic && \
     ./configure --with-charset=utf8 && make && make install && cd && rm -rf /tmp/mecab-ipadic && \
-    apk del --purge .deps
+    apk del --purge .deps || :
