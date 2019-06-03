@@ -14,8 +14,8 @@ RUN apk --no-cache add ruby graphviz gnuplot python3 py3-reportlab ghostscript &
 # skip Java installation in v2.x
 RUN if [ "$(echo "$REVIEW_VERSION" | cut -c1-2)" != "2." ]; then apk --no-cache add openjdk8-jre; fi
 
+# skip MeCab installation in v2.x
 RUN if [ "$(echo "$REVIEW_VERSION" | cut -c1-2)" != "2." ]; then \
-    : "skip MeCab installation if the version is 2.x" && \
     apk add --no-cache --virtual .deps build-base curl file ruby-dev && mkdir /tmp/mecab && \
     curl -L ${mecab_url} | tar -xzf - -C /tmp/mecab --strip-components 1 && cd /tmp/mecab && \
     ./configure --enable-utf8-only --with-charset=utf8 && make && make install && cd && rm -rf /tmp/mecab && \
