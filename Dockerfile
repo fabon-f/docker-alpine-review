@@ -21,7 +21,7 @@ RUN apk --no-cache add perl wget xz tar && \
         everypage bigfoot framed wrapfig type1cm && \
     kanji-config-updmap-sys ipaex && \
     rm -fr /tmp/install-tl && \
-    apk --no-cache del wget xz tar
+    apk --no-cache del xz tar
 
 RUN apk --no-cache add ruby graphviz gnuplot python3 py3-reportlab ghostscript && \
     gem install review -v "$REVIEW_VERSION" --no-rdoc --no-ri && \
