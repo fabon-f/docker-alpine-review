@@ -1,6 +1,8 @@
 # docker-alpine-review
 
-[Re:VIEW](https://github.com/kmuto/review)を動かすためのDockerイメージです。
+[![Docker Automated build](https://img.shields.io/docker/automated/fabon/alpine-review.svg)](https://hub.docker.com/r/fabon/alpine-review/)
+
+[Re:VIEW](https://github.com/kmuto/review)を動かすための軽量なDockerイメージです。
 
 # インストール
 
@@ -38,13 +40,23 @@ docker run -t --rm -v "$(pwd)/mybook:/book" fabon/alpine-review /bin/sh -c "cd /
 
 # 仕様
 
-* TexLive 2018
-* Re:VIEW 3.1.0
+## サポートしているバージョン
+
+Re:VIEWのバージョンごとに別のタグでイメージをビルドしています。現在存在しているタグは`2.5.0`, `3.0.0`, `3.1.0`, `latest`(3.1.0)です。
+
+## インストールされているもの
+
+* Tex Live 2019
+* Ruby
+* Re:VIEW
 * Graphviz, gnuplot, aafigure, blockdiag(`//graph`用)
 * Java 8(PlantUML用)
+* MeCab(Re:VIEWの索引作成用)
 
-PlantUMLを使う場合、作業ディレクトリ(例だとmybookの下)に`plantuml.jar`を配置してください。
+Re:VIEW 3.0以上でPlantUMLを使う場合、作業ディレクトリ(例だとmybookの下)に`plantuml.jar`を配置してください。
 
-# 過去バージョン
+# カスタマイズ
 
-現在存在しているタグは`2.5.0`, `3.0.0`, `3.1.0`, `latest`(3.1.0)です。
+最大限軽量化するため、最低限のTeXパッケージしか入っていません。デフォルトの状態のRe:VIEWプロジェクトはビルドできますが、パッケージが足りない場合は必要に応じて`tlmgr install`を実行してください。
+
+CIでビルドに使用する場合は、ビルドのたびにコンテナ内で`tlmgr install`を実行するか、もしくはこのイメージをベースとして自前のイメージを作るなどの方法があります。
