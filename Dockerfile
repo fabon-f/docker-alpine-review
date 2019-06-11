@@ -18,7 +18,7 @@ RUN apk --no-cache add perl wget xz tar && \
     /tmp/install-tl/install-tl --profile=/tmp/install-tl/texlive.profile && \
     tlmgr install collection-basic collection-latex collection-latexrecommended collection-fontsrecommended \
         collection-langcjk ascmac uplatex pxjahyper japanese-otf-uptex pxrubrica ipaex ptex-fontmaps plautopatch platex-tools \
-        everypage bigfoot framed wrapfig etoolbox listings type1cm && \
+        everypage bigfoot framed wrapfig type1cm && \
     kanji-config-updmap-sys ipaex && \
     rm -fr /tmp/install-tl && \
     apk --no-cache del wget xz tar
