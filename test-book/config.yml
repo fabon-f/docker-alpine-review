@@ -163,9 +163,9 @@ coverimage: cover.jpg
 # font_ext: ["ttf", "woff", "otf"]
 
 # ソースコードハイライトを利用する (rouge,pygmentsには外部gemが必要)
-# highlight:
-#   html: "rouge"
-#   latex: "listings"
+highlight:
+  html: "rouge"
+  latex: "listings"
 
 # カタログファイル名を指定する
 # catalogfile: catalog.yml
