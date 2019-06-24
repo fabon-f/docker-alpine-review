@@ -3,7 +3,7 @@ LABEL maintainer="syobon.hinata.public@gmail.com"
 
 ARG REVIEW_VERSION
 
-ENV PATH /usr/local/texlive/2019/bin/x86_64-linuxmusl:$PATH
+ENV PATH /usr/local/texlive/2019/bin/x86_64-linux:$PATH
 ENV mecab_url https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7cENtOXlicTFaRUE
 ENV ipadic_url https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7MWVlSDBCSXZMTXM
 
